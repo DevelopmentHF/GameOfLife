@@ -28,20 +28,8 @@ public class Tile : MonoBehaviour
             renderer.material = deadMaterial;
         }
 
-        Tile[] allTiles = GameObject.FindObjectsOfType<Tile>();
+        List<Tile> neighbouringTiles = getNeighbours();
 
-        foreach(Tile otherTile in allTiles)
-        {
-            if (otherTile == this)
-            {
-                continue;
-            }
-
-            if (isNeighbouringTile(otherTile))
-            {
-                Debug.Log($"neighbourss");
-            }
-        }
 
     }
 
@@ -52,5 +40,28 @@ public class Tile : MonoBehaviour
 
         // If the distance is less than or equal to the diagonal of a tile, they are considered neighbors
         return distance <= Mathf.Sqrt(2);
+    }
+
+    public List<Tile> getNeighbours()
+    {
+        // locate *all* tiles
+        Tile[] allTiles = GameObject.FindObjectsOfType<Tile>();
+
+        // list of neighbours
+        List<Tile> neighbours = new List<Tile>();
+
+        foreach (Tile otherTile in allTiles)
+        {
+            if (otherTile == this)
+            {
+                continue;
+            }
+
+            if (isNeighbouringTile(otherTile))
+            {
+                neighbours.Add(otherTile);
+            }
+        }
+        return neighbours;
     }
 }
