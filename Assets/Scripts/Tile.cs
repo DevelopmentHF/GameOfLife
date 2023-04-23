@@ -14,6 +14,11 @@ public class Tile : MonoBehaviour
 
     List<Tile> neighbouringTiles;
 
+    [SerializeField]
+    float updateInterval = 1f; // Update once per second
+
+    private float lastUpdateTime;
+
     void Awake()
     {
         Alive = false;
@@ -28,20 +33,43 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        if (Alive)
-        {
-            renderer.material = aliveMaterial;
-        }
 
-        if(Alive)
-        {
-            Debug.Log($"tile({transform.position.x}, {transform.position.y}) has these neighbours:\n");
-            foreach (Tile neighbour in neighbouringTiles)
-            {
-                neighbour.SetMaterial(aliveMaterial);
-                Debug.Log($"({neighbour.transform.position.x}, {neighbour.transform.position.y})");
-            }
-        }
+        // Check if one second has passed since the last update
+        //if (Time.time - lastUpdateTime >= updateInterval)
+        //{
+        //    int numNeighboursAlive = 0;
+
+        //    foreach (Tile neighbour in neighbouringTiles)
+        //    {
+        //        if (neighbour.Alive)
+        //        {
+        //            numNeighboursAlive++;
+        //        }
+        //    }
+
+
+        //    if (Alive)
+        //    {
+        //        renderer.material = aliveMaterial;
+
+        //        if (numNeighboursAlive != 2 || numNeighboursAlive != 3)
+        //        {
+        //            Alive = false;
+        //            renderer.material = deadMaterial;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (numNeighboursAlive == 3)
+        //        {
+        //            Alive = true;
+        //            renderer.material = aliveMaterial;
+        //        }
+        //    }
+        //    // Update the last update time to the current time
+        //    lastUpdateTime = Time.time;
+        //}
+        
 
     }
 
@@ -82,4 +110,17 @@ public class Tile : MonoBehaviour
         Debug.Log("changing material");
     }
 
+    void OnMouseDown()
+    {
+        Alive = !Alive;
+        Debug.Log("clicked");
+
+        if (Alive) {
+            renderer.material = aliveMaterial;
+        } else
+        {
+            renderer.material = deadMaterial;
+        }
+
+    }
 }
