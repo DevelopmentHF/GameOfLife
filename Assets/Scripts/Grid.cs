@@ -34,8 +34,5 @@ public class Grid : MonoBehaviour
 
             }
         }
-
-        Camera.main.transform.position = new Vector3((resolution - 1) / 2f, (resolution - 1) / 2f, -10f);
-        //Camera.main.orthographicSize = 20f;
     }
 }
