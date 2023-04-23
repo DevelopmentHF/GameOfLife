@@ -28,5 +28,29 @@ public class Tile : MonoBehaviour
             renderer.material = deadMaterial;
         }
 
+        Tile[] allTiles = GameObject.FindObjectsOfType<Tile>();
+
+        foreach(Tile otherTile in allTiles)
+        {
+            if (otherTile == this)
+            {
+                continue;
+            }
+
+            if (isNeighbouringTile(otherTile))
+            {
+                Debug.Log($"neighbourss");
+            }
+        }
+
+    }
+
+    public bool isNeighbouringTile(Tile otherTile)
+    {
+        // Calculate the distance between this tile and the other tile
+        float distance = Vector3.Distance(transform.position, otherTile.transform.position);
+
+        // If the distance is less than or equal to the diagonal of a tile, they are considered neighbors
+        return distance <= Mathf.Sqrt(2);
     }
 }
