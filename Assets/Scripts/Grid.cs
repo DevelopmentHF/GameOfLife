@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     [SerializeField, Range(1, 100)]
-    int resolution;
+    public int resolution;
 
     [SerializeField]
     Transform tilePrefab;
@@ -35,9 +35,7 @@ public class Grid : MonoBehaviour
             }
         }
 
-        Vector3 currentPosition = transform.localPosition;
-        currentPosition.x -= resolution / 2;
-        currentPosition.y -= resolution / 2;
-        transform.localPosition = currentPosition;
+        Camera.main.transform.position = new Vector3((resolution - 1) / 2f, (resolution - 1) / 2f, -10f);
+        //Camera.main.orthographicSize = 20f;
     }
 }
