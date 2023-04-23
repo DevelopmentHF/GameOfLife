@@ -12,10 +12,18 @@ public class Tile : MonoBehaviour
     [SerializeField]
     Material aliveMaterial, deadMaterial;
 
+    List<Tile> neighbouringTiles;
+
     void Awake()
     {
         Alive = false;
         renderer = GetComponent<SpriteRenderer>();
+        renderer.material = deadMaterial;
+    }
+
+    void Start()
+    {
+        neighbouringTiles = getNeighbours();
     }
 
     void Update()
@@ -23,13 +31,17 @@ public class Tile : MonoBehaviour
         if (Alive)
         {
             renderer.material = aliveMaterial;
-        } else
-        {
-            renderer.material = deadMaterial;
         }
 
-        List<Tile> neighbouringTiles = getNeighbours();
-
+        if(Alive)
+        {
+            Debug.Log($"tile({transform.position.x}, {transform.position.y}) has these neighbours:\n");
+            foreach (Tile neighbour in neighbouringTiles)
+            {
+                neighbour.SetMaterial(aliveMaterial);
+                Debug.Log($"({neighbour.transform.position.x}, {neighbour.transform.position.y})");
+            }
+        }
 
     }
 
@@ -64,4 +76,10 @@ public class Tile : MonoBehaviour
         }
         return neighbours;
     }
+
+    public void SetMaterial(Material material) {
+        renderer.material = material;
+        Debug.Log("changing material");
+    }
+
 }

@@ -9,7 +9,7 @@ public class Grid : MonoBehaviour
 
     [SerializeField]
     Transform tilePrefab;
-   
+
     void Awake()
     {
         var position = Vector3.zero;
@@ -25,7 +25,8 @@ public class Grid : MonoBehaviour
 
                 tile.position = position;
 
-                if ((x + y) % 2 == 1) {
+                if ((x + y) % 2 == 1)
+                {
                     Debug.Log($"Offet Tile at ({x}, {y})");
                 }
 
