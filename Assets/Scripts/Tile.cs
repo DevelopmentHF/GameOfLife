@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
 
     }
 
-    public bool isNeighbouringTile(Tile otherTile)
+    public bool IsNeighbouringTile(Tile otherTile)
     {
         // Calculate the distance between this tile and the other tile
         float distance = Vector3.Distance(transform.position, otherTile.transform.position);
@@ -69,7 +69,7 @@ public class Tile : MonoBehaviour
                 continue;
             }
 
-            if (isNeighbouringTile(otherTile))
+            if (IsNeighbouringTile(otherTile))
             {
                 neighbours.Add(otherTile);
             }

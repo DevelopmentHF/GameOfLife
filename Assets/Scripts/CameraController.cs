@@ -11,9 +11,9 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3((myGrid.resolution - 1) / 2f, (myGrid.resolution - 1) / 2f, -10f);
 
         // Zoom out
-        if (Camera.main.orthographicSize == myGrid.resolution / 2f)
+        if (Camera.main.orthographicSize <= myGrid.resolution / 2f)
         {
-            Camera.main.orthographicSize *= 1.1f;
+            Camera.main.orthographicSize = myGrid.resolution/2f * 1.1f;
         }
     }
 
