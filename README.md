@@ -2,7 +2,8 @@
 
 This is an implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) through Unity and C#.
 
-![GliderGun](https://user-images.githubusercontent.com/93821760/233930237-3e070c6b-c54f-498d-865b-76d7190290f3.gif)
+![cgolexplosion](https://user-images.githubusercontent.com/93821760/233937942-6d69d619-74df-43c4-b951-62679e15ff37.gif)
+
 
 
 ---
@@ -30,3 +31,5 @@ However, this neglects the `z` component of a world space, so I implemented a sl
 This slider allows you to **shift** the z component changing the overall colour space of the tiles, I chose blue for the gif!
 
 ---
+
+![GliderGun](https://user-images.githubusercontent.com/93821760/233930237-3e070c6b-c54f-498d-865b-76d7190290f3.gif)
