@@ -79,7 +79,7 @@ public class Tile : MonoBehaviour
         {
             renderer.material = aliveMaterial;
             renderer.material.shader = Shader.Find("Tile Surface");
-            float zShift = Mathf.PingPong(Time.time, 5.0f);
+            float zShift = Mathf.PingPong(Time.time, 8.0f);
             renderer.material.SetFloat("_zShift", zShift);
         } else
         {
