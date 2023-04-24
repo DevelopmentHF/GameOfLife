@@ -14,7 +14,6 @@ public class Tile : MonoBehaviour
 
     List<Tile> neighbours;
 
-    public bool hovered = false;
 
     void Awake()
     {

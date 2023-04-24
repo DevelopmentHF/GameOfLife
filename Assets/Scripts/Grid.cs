@@ -53,8 +53,6 @@ public class Grid : MonoBehaviour
             gameStarted = !gameStarted;
         }
 
-        Drawing();
-
         if (gameStarted)
         {
             if (Time.time - lastUpdateTime >= updateInterval)
@@ -111,27 +109,6 @@ public class Grid : MonoBehaviour
             tile.Alive = nextState[(int)tile.transform.position.x, (int)tile.transform.position.y];
             // update the tile's visual representation based on its new state
             tile.UpdateVisuals();
-        }
-    }
-
-    void Drawing()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            if (hit.collider != null)
-            {
-                Tile tile = hit.collider.GetComponent<Tile>();
-                //Debug.Log($"Mouse is over tile ({tile.transform.position.x}, {tile.transform.position.y})");
-                if (tile.hovered == false)
-                {
-                    tile.Alive = !tile.Alive;
-                }
-
-                tile.hovered = true;
-                tile.UpdateVisuals();
-            }
         }
     }
 }
