@@ -10,6 +10,15 @@ public class Grid : MonoBehaviour
     [SerializeField]
     Transform tilePrefab;
 
+    // reference to all the tile game objects in the grid
+    private Tile[] tiles;
+
+    [SerializeField]
+    float updateInterval = 1f; // Update once per second
+    private float lastUpdateTime;
+
+    bool gameStarted = false;
+
     void Awake()
     {
         var position = Vector3.zero;
@@ -25,15 +34,82 @@ public class Grid : MonoBehaviour
 
                 tile.position = position;
 
-                if ((x + y) % 2 == 1)
-                {
-                    Debug.Log($"Offet Tile at ({x}, {y})");
-                }
-
-
                 tile.SetParent(transform, false);
 
             }
         }
     }
+
+    void Start()
+    {
+        // get all the Tile components of the child game objects
+        tiles = GetComponentsInChildren<Tile>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStarted = !gameStarted;
+        }
+
+        if (gameStarted)
+        {
+            if (Time.time - lastUpdateTime >= updateInterval)
+            {
+                UpdateGeneration();
+                // Update the last update time to the current time
+                lastUpdateTime = Time.time;
+            }
+        }
+
+    }
+    void UpdateGeneration()
+    {
+        // create a temporary grid to store the next state of each tile
+        bool[,] nextState = new bool[resolution, resolution];
+
+        foreach (Tile tile in tiles)
+        {
+            // Gets number of alive neighbours to current tile
+            int liveNeighbours = tile.CountLiveNeighbours();
+
+            // apply the rules of the game to determine the next state of the tile
+            if (tile.Alive)
+            {
+                if (liveNeighbours < 2 || liveNeighbours > 3)
+                {
+                    // cell dies
+                    nextState[(int)tile.transform.position.x, (int)tile.transform.position.y] = false;
+                }
+                else
+                {
+                    // cell survives
+                    nextState[(int)tile.transform.position.x, (int)tile.transform.position.y] = true;
+                }
+            }
+            else
+            {
+                if (liveNeighbours == 3)
+                {
+                    // cell is born
+                    nextState[(int)tile.transform.position.x, (int)tile.transform.position.y] = true;
+                }
+                else
+                {
+                    // cell remains dead
+                    nextState[(int)tile.transform.position.x, (int)tile.transform.position.y] = false;
+                }
+            }
+        }
+
+        // update the state of all tiles at once based on the temporary grid
+        foreach (Tile tile in tiles)
+        {
+            tile.Alive = nextState[(int)tile.transform.position.x, (int)tile.transform.position.y];
+            // update the tile's visual representation based on its new state
+            tile.UpdateVisuals();
+        }
+    }
+
 }

@@ -2,7 +2,7 @@ Shader "Tile Surface" {
 
 	Properties {
 		_Smoothness ("Smoothness", Range(0,1)) = 0.5
-		_zShift ("z Shift", Range(0, 10)) = 10
+		_zShift ("z Shift", Range(0, 5)) = 5
 	}
 	
 	SubShader {
@@ -18,7 +18,7 @@ Shader "Tile Surface" {
 		float _zShift;
 
 		void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) {
-			surface.Albedo = input.worldPos * .4 + 2;
+			surface.Albedo = input.worldPos * .3 -0.8;
 			surface.Albedo.z = _zShift;
 			surface.Smoothness = _Smoothness;
 		}
