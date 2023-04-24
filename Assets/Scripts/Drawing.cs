@@ -6,6 +6,11 @@ public class Drawing : MonoBehaviour
 {
     Tile prevtile = null;
 
+    private void Start()
+    {
+   
+    }
+
     void Drawererer()
     {
         if (Input.GetMouseButton(0))

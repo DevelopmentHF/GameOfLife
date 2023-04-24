@@ -74,9 +74,13 @@ public class Tile : MonoBehaviour
 
     public void UpdateVisuals()
     {
-        if(Alive)
+
+        if (Alive)
         {
             renderer.material = aliveMaterial;
+            renderer.material.shader = Shader.Find("Tile Surface");
+            float zShift = Mathf.PingPong(Time.time, 5.0f);
+            renderer.material.SetFloat("_zShift", zShift);
         } else
         {
             renderer.material = deadMaterial;
