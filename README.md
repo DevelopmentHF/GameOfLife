@@ -38,4 +38,6 @@ This slider allows you to **shift** the z component changing the overall colour 
 
 ---
 
+Proof it works! Gosper's ['gliding gun'](https://en.wikipedia.org/wiki/Gun_(cellular_automaton)) in action.
+
 ![GliderGun](https://user-images.githubusercontent.com/93821760/233930237-3e070c6b-c54f-498d-865b-76d7190290f3.gif)
