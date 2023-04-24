@@ -2,7 +2,8 @@
 
 This is an implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) through Unity and C#.
 
-![cgolexplosion](https://user-images.githubusercontent.com/93821760/233937942-6d69d619-74df-43c4-b951-62679e15ff37.gif)
+![logogif](https://user-images.githubusercontent.com/93821760/234017638-2cb64fa3-a629-4f80-aca5-e0f7860d81ce.gif)
+
 
 
 
