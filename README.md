@@ -22,6 +22,11 @@ There is a grid of Unity GameObjects which are dynamically spawned based on an i
 At the moment this resolution is capped to 100. <br>
 It's also easy to edit the update rate, if you want the game to progress slower or faster. <br>
 
+
+You can draw, either when the simulation is paused or running for some really cool effects :D .<br>
+
+Visit the itch.io page in the description to play around.
+
 ---
 
 ## Shader

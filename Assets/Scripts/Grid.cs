@@ -53,7 +53,7 @@ public class Grid : MonoBehaviour
             gameStarted = !gameStarted;
         }
 
-        Dragging();
+        Drawing();
 
         if (gameStarted)
         {
@@ -114,7 +114,7 @@ public class Grid : MonoBehaviour
         }
     }
 
-    void Dragging()
+    void Drawing()
     {
         if (Input.GetMouseButton(0))
         {
