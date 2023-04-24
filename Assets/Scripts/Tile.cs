@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField]
-    public bool Alive, aliveBuffer;
+    public bool Alive;
 
     SpriteRenderer renderer;
 
@@ -14,10 +14,11 @@ public class Tile : MonoBehaviour
 
     List<Tile> neighbours;
 
+    public bool hovered = false;
+
     void Awake()
     {
         Alive = false;
-        aliveBuffer = false;
         renderer = GetComponent<SpriteRenderer>();
         renderer.material = deadMaterial;
     }
@@ -57,20 +58,6 @@ public class Tile : MonoBehaviour
             }
         }
         return neighbours;
-    }
-
-    void OnMouseDown()
-    {
-        Alive = !Alive;
-        Debug.Log("clicked");
-
-        if (Alive) {
-            renderer.material = aliveMaterial;
-        } else
-        {
-            renderer.material = deadMaterial;
-        }
-
     }
 
     public int CountLiveNeighbours()
