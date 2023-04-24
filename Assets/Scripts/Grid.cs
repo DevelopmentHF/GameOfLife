@@ -14,7 +14,7 @@ public class Grid : MonoBehaviour
     private Tile[] tiles;
 
     [SerializeField]
-    float updateInterval = 1f; // Update once per second
+    float updateInterval = 0.1f; // Update 10 times a second
     private float lastUpdateTime;
 
     bool gameStarted = false;
