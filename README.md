@@ -33,8 +33,8 @@ Visit the itch.io page in the description to play around.
 ## Shader
 The cells colour is created through the use of a dynamic shader. <br>
 I've made it so the colour of a tile is dependent on the world `x`,`y` position of a tile. <br>
-However, this neglects the `z` component of a world space, so I implemented a slider to accomodate for this. <br>
-This slider allows you to **shift** the z component changing the overall colour space of the tiles, I chose blue for the gif!
+However, this neglects the `z` component of a world space, so I implemented a way to change it via time! <br>
+As the simulation progress, a constant colour shift will take place.
 
 ---
 
